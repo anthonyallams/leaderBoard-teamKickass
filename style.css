@@ -10,6 +10,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 
 li {
@@ -149,23 +150,17 @@ aside ul li a img {
 
 .upload-file {
     margin-right: 2rem;
-    width: auto;
+    width: 200px;
     display: flex;
     padding: .2rem;
-    background-color: #021989;
+    background-color: #fff;
     border-radius: .4rem;
-}
-
-.upload-file input {
-    width: 100px;
-    border: 1px solid transparent;
-    padding: .2rem .5rem;
+    padding: .3rem;
     outline: none;
-    background-color: transparent;
 }
 
-.upload-file input::placeholder {
-    color: #fff;
+.upload-file input[type="file"] {
+    outline: none;
 }
 
 .upload-file select {
@@ -250,16 +245,6 @@ aside ul li a img {
     justify-content: space-between;
 }
 
-.fb {
-    width: 20px;
-    height: 20px;
-    background-color: #021989;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .twitter {
     width: 20px;
     height: 20px;
@@ -298,6 +283,7 @@ aside ul li a img {
     padding: 0 0 0 60px;
     display: flex;
     margin-bottom: .5rem;
+    color: #021989;
 }
 
 .name {
