@@ -1,12 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Leaderboard Task</title>
-  </head>
-  <body>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/logo.svg" alt="">
+            <div class="logo-name">
+                <h5>HNG INTERNSHIP</h5>
+                <span>Changing lives, one intern at a time</span>
+            </div>
+        </div>
+        <div class="search-box">
+          <img src="assets/search.svg" alt="">
+          <input type="text" placeholder="Search">
+        </div>
+    </header>
+
+    <main>
+        <aside>
+          <ul>
+            <li>
+              <a href="#">
+                <img src="assets/home.svg" alt="home">
+                <span>DASHBOARD</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="assets/user.svg" alt="home">
+                <span>INTERN</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active">
+                <img src="assets/rank.svg" alt="home">
+                <span>LEADERBOARD</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="assets/user.svg" alt="home">
+                <span>DASHBOARD</span>
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <section class="main-body">
+
+          <header class="main-body-header">
+            <div class="leaderboard">
+              <img src="assets/rank.svg" alt="">
+              <span>LEADERBOARD</span>
+            </div>
+            <div class="upload-file">
+              <input type="text" placeholder="Upload File">
+              <select name="Select file extension" id="">
+                <option value="">JSON</option>
+                <option value="">CSV</option>
+              </select>
+            </div>
+          </header>
+
+          <div class="ranks">
+            <div class="sort">
+              <input type="text" placeholder="Sort">
+              <select name="" id="">
+                <option value="">Lowest</option>
+                <option value="">Highest</option>
+              </select>
+            </div>
+
+            <div class="rank-list">
+
+              <div class="table-head">
+                <div class="name">Name</div>
+                <div class="username">Username</div>
+                <div class="email-add">Email</div>
+                <div class="points">Points</div>
+                <div class="share">Share</div>
+              </div>
+              
+              <div class="row">
+                <div class="circle-avatar">
+                  <div class="circle">
+                    <img src="assets/trophy.svg" alt="">
+                  </div>
+                </div>
+                <div class="details">
+                  <div class="full-name"><span>Sunday Morenikeji</span></div>
+                  <div class="slack"><span>@areel007</span></div>
+                  <div class="email"><span>morenikejicodexiphaar@gmail.com</span></div>
+                  <div class="point"><span>1000</span></div>
+                  <div class="socials">
+                    <div class="fb"><img src="assets/fb.svg" alt=""></div>
+                    <div class="twitter"><img src="assets/twitter.svg" alt=""></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="circle-avatar">
+                  <div class="circle">
+                    <img src="assets/silver.svg" alt="">
+                  </div>
+                </div>
+                <div class="details">
+                  <div class="full-name"><span>Sunday Morenikeji</span></div>
+                  <div class="slack"><span>@areel007</span></div>
+                  <div class="email"><span>morenikejicodexiphaar@gmail.com</span></div>
+                  <div class="point"><span>1000</span></div>
+                  <div class="socials">
+                    <div class="fb"><a href="#"><img src="assets/fb.svg" alt=""></a></div>
+                    <div class="twitter"><a href="#"><img src="assets/twitter.svg" alt=""></a></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="circle-avatar">
+                  <div class="circle">
+                    <img src="assets/bronze.svg" alt="">
+                  </div>
+                </div>
+                
+                <div class="details">
+                  <div class="full-name"><span>Sunday Morenikeji</span></div>
+                  <div class="slack"><span>@areel007</span></div>
+                  <div class="email"><span>morenikejicodexiphaar@gmail.com</span></div>
+                  <div class="point"><span>1000</span></div>
+                  <div class="socials">
+                    <div class="fb"><a href="#"><img src="assets/fb.svg" alt=""></a></div>
+                    <div class="twitter"><a href="#"><img src="assets/twitter.svg" alt=""></a></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+    </main>
     <script src="app.js"></script>
-  </body>
+</body>
 </html>
