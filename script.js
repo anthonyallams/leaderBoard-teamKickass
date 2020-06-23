@@ -62,7 +62,7 @@ const updateDOM = (paramData = data) => {
 // Function to load JSON File
 const getJSON = (e) => {
   let input = e.target;
-  location.reload();
+  // location.reload();
   clearUI();
   // location.reload();
   let reader = new FileReader();
@@ -94,7 +94,7 @@ const getJSON = (e) => {
 // Function to load CSV File
 const getCSV = (e) => {
   let input = e.target;
-  location.reload();
+  // location.reload();
   clearUI();
   let reader = new FileReader();
   reader.onload = () => {
