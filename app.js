@@ -171,7 +171,7 @@ const getCSV = (e) => {
 
 // Load CSV File from server
 const loadFromServer = async () => {
-  const response = await fetch("/files/HNGi7- Sheet2.csv");
+  const response = await fetch("files/HNGi7- Sheet2.csv");
   const datas = await response.text();
 
   let lines = datas
