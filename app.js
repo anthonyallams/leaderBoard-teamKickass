@@ -6,25 +6,61 @@ const slackName = document.querySelector(".slackName");
 const email = document.querySelector(".email");
 const point = document.querySelector(".point");
 const rank = document.querySelector(".ranks");
+const container = document.querySelector(".rank-list");
 
 // const buttondesc = document.querySelector(".sortdesc");
 // const buttonasc = document.querySelector(".sortasc");
 
+// Twitter share
+window.onload = setShareLinks;
+
+function setShareLinks() {
+  var pageUrl = encodeURIComponent(document.URL);
+  var description = document
+    .querySelector("meta[name='description']")
+    .getAttribute("content");
+  var description = encodeURIComponent(description);
+
+  elements = document.querySelectorAll(".social-share");
+  Array.prototype.forEach.call(elements, function (el) {
+    el.addEventListener("click", function () {
+      url =
+        "https://twitter.com/intent/tweet?url=" +
+        pageUrl +
+        "&text=" +
+        description;
+      socialWindow(url);
+    });
+  });
+}
+
+function socialWindow(url) {
+  var left = (screen.width - 570) / 2;
+  var top = (screen.height - 570) / 2;
+  var params =
+    "menubar=no,toolbar=no,status=no,width=570,height=570,top=" +
+    top +
+    ",left=" +
+    left;
+  window.open(url, "NewWindow", params);
+}
+
 // Store all users
 let data = [];
+// let BigData;
 
 // Remove all node contents
 const clearUI = () => {
-  while (rank.firstChild) {
-    rank.removeChild(rank.firstChild);
+  while (container.firstChild) {
+    container.removeChild(rank.firstChild);
   }
 };
 
 // Function to Update DOM
 const updateDOM = (paramData = data) => {
-  const container = document.querySelector(".rank-list");
-  const row = document.querySelector(".row");
-  //   console.log(typeof output);
+  // const container = document.querySelector(".rank-list");
+  // const row = document.querySelector(".row");
+  // console.log(container);
   data.sort((a, b) => {
     return b.points - a.points;
   });
@@ -54,8 +90,8 @@ const updateDOM = (paramData = data) => {
     </div>
     <div class="point"><span>${para.points}</span></div>
     <div class="socials">
-      <div class="twitter">
-        <a href="https://www.twitter.com"
+      <div class="twitter social-share">
+        <a href="#" target ="_blank"
           ><img src="assets/twitter.svg" alt=""
         /></a>
       </div>
@@ -88,13 +124,13 @@ const updateDOM = (paramData = data) => {
 const getJSON = (e) => {
   let input = e.target;
   // location.reload();
-  clearUI();
+  // clearUI();
   // location.reload();
   let reader = new FileReader();
   //   console.log(reader);
   reader.onload = () => {
     let jsons = JSON.parse(reader.result);
-    console.log("jsons", jsons);
+    // console.log("jsons", jsons);
     for (let i = 0; i < jsons.length; i++) {
       let json = jsons[i];
       let first = json["FULL NAME"];
@@ -110,17 +146,30 @@ const getJSON = (e) => {
         points: fourth,
       };
       data.push(results);
+      //To remove duplicates from record -- causing delay in program
+      // const BigData = data.reduce((acc, current) => {
+      //   const x = acc.find((item) => item.id === current.id);
+      //   if (!x) {
+      //     return acc.concat([current]);
+      //   } else {
+      //     return acc;
+      //   }
+      // }, []);
     }
-    updateDOM(data);
+    updateDOM(BigData);
   };
   reader.readAsText(filejson.files[0]);
 };
 
 // Function to load CSV File
 const getCSV = (e) => {
+  const row = document.querySelector(".row");
+
+  loadFromServer = null;
+  row.innerHTML = "";
   let input = e.target;
   // location.reload();
-  clearUI();
+  // clearUI();
   let reader = new FileReader();
   reader.onload = () => {
     let lines = reader.result
@@ -158,6 +207,15 @@ const getCSV = (e) => {
 
       //   return result;
       data.push(result1, result2);
+      //To remove duplicates from record -- causing delay in program
+      // const BigData = data.reduce((acc, current) => {
+      //   const x = acc.find((item) => item.username === current.username);
+      //   if (!x) {
+      //     return acc.concat([current]);
+      //   } else {
+      //     return acc;
+      //   }
+      // }, []);
     }
     updateDOM(data);
 
@@ -168,9 +226,8 @@ const getCSV = (e) => {
   reader.readAsBinaryString(filecsv.files[0]);
   //   reader.readAsText(filecsv.files[0]);
 };
-
 // Load CSV File from server
-const loadFromServer = async () => {
+let loadFromServer = async () => {
   const response = await fetch("HNGi7Sheet2i.csv");
   const datas = await response.text();
 
@@ -208,7 +265,17 @@ const loadFromServer = async () => {
 
     //   return result;
     data.push(result1, result2);
+    //To remove duplicates from record -- causing delay in program
+    // BigData = data.reduce((acc, current) => {
+    //   const x = acc.find((item) => item.username === current.username);
+    //   if (!x) {
+    //     return acc.concat([current]);
+    //   } else {
+    //     return acc;
+    //   }
+    // }, []);
   }
+
   updateDOM(data);
 };
 
