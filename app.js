@@ -121,7 +121,11 @@ const updateDOM = (paramData = data) => {
 // };
 
 // Function to load JSON File
-const getJSON = (e) => {
+let getJSON = (e) => {
+  loadFromServer = null;
+  getCSV = null;
+  filejson.value = "";
+
   let input = e.target;
   // location.reload();
   // clearUI();
@@ -156,17 +160,20 @@ const getJSON = (e) => {
       //   }
       // }, []);
     }
-    updateDOM(BigData);
+    updateDOM(data);
   };
   reader.readAsText(filejson.files[0]);
 };
 
 // Function to load CSV File
-const getCSV = (e) => {
-  const row = document.querySelector(".row");
+let getCSV = (e) => {
+  // const row = document.querySelector(".row");
 
   loadFromServer = null;
-  row.innerHTML = "";
+  getJSON = null;
+  filejson.value = "";
+  console.log(filejson.value);
+  // row.innerHTML = "";
   let input = e.target;
   // location.reload();
   // clearUI();
