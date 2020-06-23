@@ -5,7 +5,7 @@ const row = document.querySelector(".row");
 const slackName = document.querySelector(".slackName");
 const email = document.querySelector(".email");
 const point = document.querySelector(".point");
-const rank = document.querySelector(".rank");
+const rank = document.querySelector(".ranks");
 
 // const buttondesc = document.querySelector(".sortdesc");
 // const buttonasc = document.querySelector(".sortasc");
@@ -171,7 +171,7 @@ const getCSV = (e) => {
 
 // Load CSV File from server
 const loadFromServer = async () => {
-  const response = await fetch("files/HNGi7- Sheet2.csv");
+  const response = await fetch("HNGi7Sheet2i.csv");
   const datas = await response.text();
 
   let lines = datas
