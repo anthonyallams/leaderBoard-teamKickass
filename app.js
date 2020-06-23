@@ -61,6 +61,8 @@ const updateDOM = (paramData = data) => {
   // const container = document.querySelector(".rank-list");
   // const row = document.querySelector(".row");
   // console.log(container);
+  const imgUrl = document.querySelector(".circle .images");
+
   data.sort((a, b) => {
     return b.points - a.points;
   });
@@ -71,15 +73,35 @@ const updateDOM = (paramData = data) => {
   <div class="points">Points</div>
   <div class="share">Share</div>
 </div>`;
+  // console.log(paramData[0]);
+  // console.log(paramData[1]);
+  // console.log(paramData[2]);
+  // console.log(imgUrl);
 
   paramData.forEach((para) => {
     const row = document.createElement("div");
     row.classList.add("row");
+    // console.log(paramData[0]);
+    // if (paramData[2] === para) {
+    //   console.log(para);
+    // }
+    let imgSrc;
+    if (paramData[0] === para) {
+      imgSrc = "assets/trophy.svg";
+    } else if (paramData[1] === para) {
+      imgSrc = "assets/silver.svg";
+    } else if (paramData[2] === para) {
+      imgSrc = "assets/bronze.svg";
+    } else {
+      imgSrc = "assets/user.svg";
+    }
+    imgUrl.setAttribute("src", imgSrc);
+    // console.log(imgUrl);
 
     row.innerHTML = `
     <div class="circle-avatar">
     <div class="circle">
-      <img src="assets/user.svg" alt="" />
+      <img src=${imgSrc} alt="" class="images" />
     </div>
   </div>
   <div class="details">
@@ -92,7 +114,7 @@ const updateDOM = (paramData = data) => {
     <div class="socials">
       <div class="twitter social-share">
         <a href="#" target ="_blank"
-          ><img src="assets/twitter.svg" alt=""
+          / ><img src='assets/twitter.svg' alt=""
         /></a>
       </div>
     </div>
@@ -100,6 +122,7 @@ const updateDOM = (paramData = data) => {
       `;
     container.appendChild(row);
   });
+  // console.log(imgUrl);
 };
 
 // Function to sort users descending based on points
@@ -224,6 +247,7 @@ let getCSV = (e) => {
       //   }
       // }, []);
     }
+    // console.log(data);
     updateDOM(data);
 
     // console.log(data);
@@ -282,7 +306,7 @@ let loadFromServer = async () => {
     //   }
     // }, []);
   }
-
+  // console.log(data[0]);
   updateDOM(data);
 };
 
